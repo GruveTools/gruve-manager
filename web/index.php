@@ -3,9 +3,9 @@
 <head>
 <?php
 $home_dir = '/home/ethos/';
-$ethos_autominer_dir = $home_dir . '.autominer/';
-$config = json_decode(file_get_contents($ethos_autominer_dir . 'config.json'));
-$current_coin = file_get_contents($ethos_autominer_dir . 'current_coin.txt');
+$gruve_dir = $home_dir . '.gruve/';
+$config = json_decode(file_get_contents($gruve_dir . 'config.json'));
+$current_coin = file_get_contents($gruve_dir . 'current_coin.txt');
 $local_conf = file_get_contents($home_dir . 'local.conf');
 
 $rig = gethostname();
@@ -21,7 +21,7 @@ for ($i = 0; $i < count($local_conf); $i++) {
 }
 ?>
   <meta charset="utf-8">
-  <title>ethOS Autominer</title>
+  <title>Gruve</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
   <link rel="icon" type="image/png" href="favicon.png">
@@ -44,14 +44,14 @@ for ($i = 0; $i < count($local_conf); $i++) {
     var custompanel = '<?php echo $custom_panel; ?>';
     var rig = '<?php echo $rig; ?>';
     </script>
-  <script type="text/javascript" src="assets/js/ethos-autominer.js"></script>
+  <script type="text/javascript" src="assets/js/gruve.js"></script>
 </head>
 <body class="keen-dashboard" style="padding-top: 80px;">
 
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">ethOS Autominer</a>
+        <a class="navbar-brand" href="/">Gruve</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
@@ -103,7 +103,7 @@ for ($i = 0; $i < count($local_conf); $i++) {
 
     <hr>
 
-    <p class="small text-muted"><a href="https://github.com/Japh/ethos-autominer">Built with &#9829;</a></p>
+    <p class="small text-muted"><a href="https://github.com/GruveTools">Built with &#9829;</a></p>
   </div>
 
 </body>
