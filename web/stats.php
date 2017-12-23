@@ -1,8 +1,8 @@
 <?php
 $home_dir = '/home/ethos/';
-$ethos_autominer_dir = $home_dir . '.autominer/';
+$gruve_dir = $home_dir . '.gruve/';
 
-$db = json_decode(file_get_contents($ethos_autominer_dir . 'db.json'));
+$db = json_decode(file_get_contents($gruve_dir . 'db.json'));
 
 $since = (!empty($_GET['since']) ? $_GET['since'] : 0);
 $metric = (!empty($_GET['metric']) ? $_GET['metric'] : 0);

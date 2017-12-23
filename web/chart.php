@@ -1,8 +1,8 @@
 <?php
 $home_dir = '/home/ethos/';
-$ethos_autominer_dir = $home_dir . '.autominer/';
+$gruve_dir = $home_dir . '.gruve/';
 
-$db = json_decode(file_get_contents($ethos_autominer_dir . 'db.json'));
+$db = json_decode(file_get_contents($gruve_dir . 'db.json'));
 
 $since = (!empty($_GET['since']) ? $_GET['since'] : 0);
 $metric = (!empty($_GET['metric']) ? $_GET['metric'] : 0);
@@ -30,7 +30,7 @@ for ($i = 0; $i < count($db->stats); $i++) {
     }
 }
 
-$config_dir = scandir($ethos_autominer_dir . 'configs');
+$config_dir = scandir($gruve_dir . 'configs');
 $configs = array();
 
 for($i = 0; $i < count($config_dir); $i++) {
@@ -39,7 +39,7 @@ for($i = 0; $i < count($config_dir); $i++) {
     }
     $conf = explode('.', $config_dir[$i]);
     $conf = $conf[0];
-    $configs[$conf] = file_get_contents($ethos_autominer_dir . 'configs/' . $config_dir[$i]);
+    $configs[$conf] = file_get_contents($gruve_dir . 'configs/' . $config_dir[$i]);
 }
 
 foreach($pools as $pool => $qty) {

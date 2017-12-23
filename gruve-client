@@ -1,0 +1,54 @@
+#!/usr/bin/env php
+<?php
+require_once('includes/class.gruve.php');
+
+if (!empty(getenv('PUSHBULLET_TOKEN'))) {
+    $options['pushbullet_token'] = getenv('PUSHBULLET_TOKEN');
+}
+
+if (!empty(getenv('PUSHOVER_TOKEN'))) {
+    $options['pushover_token'] = getenv('PUSHOVER_TOKEN');
+}
+
+if (!empty(getenv('PUSHOVER_USER'))) {
+    $options['pushover_user'] = getenv('PUSHOVER_USER');
+}
+
+$options = [];
+
+for ($i = 0; $i < count($argv); $i++) {
+    if ($argv[$i] == '--setup') {
+        $setup = $argv[$i+1];
+        $gruve->setup($setup);
+    }
+    if ($argv[$i] == '--dry-run') {
+        $options['dry_run'] = true;
+    }
+    if ($argv[$i] == '--force') {
+        if (!empty($argv[$i+1])) {
+            $options['force_coin'] = $argv[$i+1];
+        }
+    }
+    if ($argv[$i] == '--unlock') {
+        $options['unlock'] = true;
+    }
+    if ($argv[$i] == '--pushbullet-token') {
+        if (!empty($argv[$i+1])) {
+            $options['pushbullet_token'] = $argv[$i+1];
+        }
+    }
+    if ($argv[$i] == '--pushover-token') {
+        if (!empty($argv[$i+1])) {
+            $options['pushover_token'] = $argv[$i+1];
+        }
+    }
+    if ($argv[$i] == '--pushover-user') {
+        if (!empty($argv[$i+1])) {
+            $options['pushover_user'] = $argv[$i+1];
+        }
+    }
+}
+
+$gruve = new Gruve($options);
+
+$gruve->coin_check();
